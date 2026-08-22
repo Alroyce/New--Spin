@@ -1,0 +1,189 @@
+<html>
+    <head>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="style.css">
+       
+    </head>
+    <body>
+        <form action="save_booking.php" method="POST">       
+        <div class="container">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="topay.html">To Pay</a></li>
+                <li><a href="paid.html">Paid</a></li>
+                <li><a href="tripsheet.html">Trip Sheet</a></li>
+                <li><a href="bookings.html">Bookings</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    
+        <div class="header">
+
+            <h1 type="hidden" name="payment_type" value="TO PAY">TO PAY</h1>
+
+            <div class="meta-info">
+                LR Number:
+                    <span id="lrNumber"></span>
+                    <input type="hidden" id="lr_number" name="lr_number">
+
+               Date:
+                    <span id="lrdate"></span>
+                    <input type="hidden" id="booking_date" name="booking_date">
+            </div>
+
+        </div>
+
+            <div class="lrform">
+                <div class="form1">
+                    <label for="from-input">From</label>
+                    <input type="text" name="from_location" placeholder="Enter the source place">
+                    <label for="to1">To</label>
+                    <input type="text" name="to_location" placeholder="Enter the Destination place">
+                </div>
+            </div>   
+            <div class="lrdetails">
+                
+            <div class="form-section">
+            <label>Consignor (From)</label>
+
+            <div class="inline-fields">
+                <input type="text"  name="sender_name" class="input-box" placeholder="Sender Name">
+                <input type="number" class="input-box" name="sender_contact" placeholder="Contact No">
+            </div>
+
+            <input type="text" class="input-box" name="sender_gst" placeholder="GST Details">
+            <input type="text" class="input-box" name="sender_address" placeholder="Address">
+        </div>
+
+        <div class="form-section">
+            <label>Consignor (From)</label>
+
+            <div class="inline-fields">
+                <input type="text" class="input-box" name="receiver_name" placeholder="Sender Name">
+                <input type="number" class="input-box" name="receiver_contact" placeholder="Contact No">
+            </div>
+
+            <input type="text" class="input-box" name="receiver_gst" placeholder="GST Details">
+            <input type="text" class="input-box" name="receiver_address" placeholder="Address">
+        </div>
+            
+        </div>
+
+        <div class="booking-container">
+
+            <!-- Left Side -->
+            <div class="article-section">
+                <h3>Article Booking Details</h3>
+
+
+                    <table id="parcelTable">
+                        <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th>Goods Description</th>
+                                <th>Weight (kg)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" name="article_qty"  placeholder="Qty"></td>
+                                <td><input type="text" name="article_description" placeholder="Goods"></td>
+                                <td><input type="number" name="article_value"   placeholder="Weight"></td>
+                                <td><button type="button" onclick="removeRow(this)">Remove</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button type="button" id="addGoods">Add More Goods</button>
+                
+            </div>
+
+            <!-- Right Side -->
+            <div class="charges-section">
+                <h3>Charges</h3>
+
+                <table class="charges-table">
+                    <tr><td>Freight</td><td><input type="number" placeholder="0"></td></tr>
+                    <tr><td>Hamali</td><td><input type="number" placeholder="0"></td></tr>
+                    <tr><td>Stationary</td><td><input type="number" placeholder="0"></td></tr>
+                    <tr><td>Door Delivery</td><td><input type="number" placeholder="0"></td></tr>
+                    <tr><td>Others</td><td><input type="number" placeholder="0"></td></tr>
+                    <tr><td>Total</td><td><input type="number" placeholder="0"></td></tr>
+                    <tr><td>GST 5%</td><td><input type="number" placeholder="0"></td></tr>
+                    <tr><td>IGST 5%</td><td><input type="number" placeholder="0"></td></tr>
+                    <tr>
+                        <td><strong>Grand Total</strong></td>
+                        <td><input type="number" name="charges" value="0"></td>
+</tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="booking-container">
+            <div class="details-wrapper">
+
+            <div id="form-group1">
+                <div>
+                    <label>Actual Wt</label>
+                    <input type="number" class="small-input" name="actual_wt" placeholder="0">
+                </div>
+
+                <div>
+                    <label>Charged Wt</label>
+                    <input type="number" class="small-input" name="charged_wt" placeholder="0">
+                </div>
+
+                <div>
+                    <label>Wt Rate</label>
+                    <input type="number" class="small-input" name="wt_rate"  placeholder="0">
+                </div>
+
+                <div>
+                    <label>Wt Amt</label>
+                    <input type="number" class="small-input" name="wt_amount" placeholder="0">
+                </div>
+
+                <div>
+                    <label>Fix Amt</label>
+                    <input type="number" class="small-input" name="fixed_amount" placeholder="0">
+                </div>
+            </div>
+
+            <div id="form-group2">
+                <input type="number" class="small-input" name="invoice_no" placeholder="Invoice No">
+
+                <input type="number" class="small-input" name="declared_value" placeholder="Declared Value">
+
+                <input type="text" class="small-input" name="remarks" placeholder="Remarks">
+            </div>
+
+        </div>        
+
+
+        <div class="delivery-box">
+                <div class="field">
+                    <label>Delivery At</label>
+                    <select class="small-input"  name="delivery_at">
+                        <option>Godown</option>
+                        <option>Office</option>
+                        <option>Party</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Booked By</label>
+                    <input type="text" class="small-input" name="booked_by" placeholder="Bookie Name">
+                </div>
+            </div>
+        </div>
+
+            <div id="form-group4">
+                <button type="submit" onclick="window.print()">Save & Print</button>
+                <button  onclick="clearsection()">Clear</button>
+            </div>
+                
+        <script src="script.js"></script>
+        </form>
+    </body>
+</html>
