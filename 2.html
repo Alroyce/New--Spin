@@ -1,0 +1,290 @@
+<html>
+    <head>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="style3.css">
+       
+    </head>
+    <body>
+              
+<div class="container">
+    <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#" onclick="showPage('lr')">To Pay</a></li>
+        <li><a href="#" onclick="showPage('paid')">Paid</a></li>
+        <li><a href="#" onclick="showPage('trip')">Trip Sheet</a></li>
+        <li><a href="#Bookings">Bookings</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</div>
+
+<div id="lrPage">
+
+<div class="header">
+
+    <h1 id="formTitle">TO PAY</h1>
+
+    <div class="meta-info">
+        <p>
+            LR Number:
+            <span id="lrNumber"></span>
+        </p>
+
+        <p>
+            Date:
+            <span id="lrdate"></span>
+        </p>
+    </div>
+
+</div>
+
+
+<!-- YOUR EXISTING FORM START -->
+
+<div class="lrform">
+
+    <div class="form1">
+
+        <label>From</label>
+        <input type="text" placeholder="Enter Source Place">
+
+        <label>To</label>
+        <input type="text" placeholder="Enter Destination Place">
+
+    </div>
+
+</div>
+
+
+<div class="lrdetails">
+
+    <div class="form-section">
+
+        <label>Consignor (From)</label>
+
+        <div class="inline-fields">
+
+            <input type="text" class="input-box" placeholder="Sender Name">
+
+            <input type="tel"
+            class="input-box"
+            placeholder="Contact No"
+            minlength="10"
+            maxlength="10"
+            pattern="[0-9]{10}">
+
+        </div>
+
+        <input type="text" placeholder="GST Details">
+        <input type="text" placeholder="Address">
+
+    </div>
+
+
+    <div class="form-section">
+
+        <label>Consignee (To)</label>
+
+        <div class="inline-fields">
+
+            <input type="text" class="input-box" placeholder="Receiver Name">
+
+            <input type="tel"
+            class="input-box"
+            placeholder="Contact No"
+            minlength="10"
+            maxlength="10"
+            pattern="[0-9]{10}">
+
+        </div>
+
+        <input type="text" placeholder="GST Details">
+        <input type="text" placeholder="Address">
+
+    </div>
+
+</div>
+
+
+<!-- Keep your Article, Charges, Weight, Delivery sections here -->
+<div class="booking-container">
+
+    <!-- Left Side -->
+    <div class="article-section">
+        <h3>Article Booking Details</h3>
+
+        <form action="/submit-booking" method="post">
+            <table id="parcelTable">
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Goods Description</th>
+                        <th>Weight (kg)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="number" placeholder="Qty"></td>
+                        <td><input type="text" placeholder="Goods"></td>
+                        <td><input type="number" placeholder="Weight"></td>
+                        <td><button>Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="button">Add More Goods</button>
+        </form>
+    </div>
+
+    <!-- Right Side -->
+    <div class="charges-section">
+        <h3>Charges</h3>
+
+        <table class="charges-table">
+            <tr><td>Freight</td><td><input type="number" placeholder="0"></td></tr>
+            <tr><td>Hamali</td><td><input type="number" placeholder="0"></td></tr>
+            <tr><td>Stationary</td><td><input type="number" placeholder="0"></td></tr>
+            <tr><td>Door Delivery</td><td><input type="number" placeholder="0"></td></tr>
+            <tr><td>Others</td><td><input type="number" placeholder="0"></td></tr>
+            <tr><td>Total</td><td><input type="number" placeholder="0"></td></tr>
+            <tr><td>GST 5%</td><td><input type="number" placeholder="0"></td></tr>
+            <tr><td>IGST 5%</td><td><input type="number" placeholder="0"></td></tr>
+            <tr><td><strong>Grand Total</strong></td><td><input type="number" placeholder="0"></td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="booking-container">
+    <div class="details-wrapper">
+
+    <div id="form-group1">
+        <div>
+            <label>Actual Wt</label>
+            <input type="number" class="small-input" placeholder="0">
+        </div>
+
+        <div>
+            <label>Charged Wt</label>
+            <input type="number" class="small-input" placeholder="0">
+        </div>
+
+        <div>
+            <label>Wt Rate</label>
+            <input type="number" class="small-input" placeholder="0">
+        </div>
+
+        <div>
+            <label>Wt Amt</label>
+            <input type="number" class="small-input" placeholder="0">
+        </div>
+
+        <div>
+            <label>Fix Amt</label>
+            <input type="number" class="small-input" placeholder="0">
+        </div>
+    </div>
+
+    <div id="form-group2">
+        <input type="number" class="small-input" placeholder="Invoice No">
+
+        <input type="number" class="small-input" placeholder="Declared Value">
+
+        <input type="text" class="small-input" placeholder="Remarks">
+    </div>
+
+</div>        
+
+
+<div class="delivery-box">
+        <div class="field">
+            <label>Delivery At</label>
+            <select class="small-input">
+                <option>Godown</option>
+                <option>Office</option>
+                <option>Party</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Booked By</label>
+            <input type="text" class="small-input" placeholder="Bookie Name">
+        </div>
+    </div>
+</div>
+
+<div id="form-group4">
+
+    <button onclick="window.print()">
+        Save & Print
+    </button>
+
+    <button onclick="clearsection()">
+        Clear
+    </button>
+
+</div>
+</div>
+
+<div id="tripPage" style="display:none;">
+
+    <div class="header">
+        <h1>TRIP SHEET</h1>
+    </div>
+
+    <div class="tripform">
+
+        <div class="form1">
+            <label>Date</label>
+            <input type="date">
+        </div>
+            <label>From</label>
+            <input type="text" placeholder="Enter Source Place">
+
+            <label>To</label>
+            <input type="text" placeholder="Enter Destination Place">
+        </div>
+
+        <div class="form1">
+            <label>Driver Name</label>
+            <input type="text" placeholder="Enter Driver Name">
+
+            <label>Driver Number</label>
+            <input type="number" placeholder="Enter Driver Number">
+        </div>
+
+        <div id="form-group5">
+            <button onclick="window.print()">Print</button>
+            <button type="reset">Clear</button>
+        </div>
+
+    </div>
+
+</div>
+<div id="Booking" style="display:none;">
+
+    <div class="header">
+        <h1>Booking</h1>
+    </div>
+
+    <div id="underDevelopment" style="display:none;">
+    <div class="header">
+        <h1>UNDER DEVELOPMENT</h1>
+    </div>
+
+    <div class="development-box">
+        <h2>🚧 This page is under development</h2>
+        <p>This feature will be available in a future update.</p>
+    </div>
+</div>
+<div id="About" style="display:none;">
+
+    <div class="header">
+        <h1>About</h1>
+    </div>
+
+    <div class="tripform">
+    </div>
+</div>
+     <script src="script3.js"></script>
+    </body>
+</html>
